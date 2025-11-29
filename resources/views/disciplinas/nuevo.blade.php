@@ -10,7 +10,7 @@
                 <h5 class="mb-0"><i class="bi bi-trophy"></i> Nueva Disciplina</h5>
             </div>
             <div class="card-body">
-                <form action="{{ route('disciplinas.store') }}" method="POST">
+                <form action="{{ route('disciplinas.store') }}" method="POST" id="frm_nuevo_dc">
                     @csrf
                     <div class="mb-3">
                         <label for="NombreDisciplina" class="form-label">Nombre de la Disciplina:</label>
@@ -31,4 +31,21 @@
         </div>
     </div>
 </div>
+
+<script>
+  $("#frm_nuevo_dc").validate({
+    rules: {
+      NombreDisciplina: {
+        required: true,
+        minlength: 3
+      }
+    },
+    messages: {
+      NombreDisciplina: {
+        required: "El nombre es obligatorio",
+        minlength: "El nombre debe tener al menos 3 caracteres"
+      }
+    }
+  });
+</script>
 @endsection

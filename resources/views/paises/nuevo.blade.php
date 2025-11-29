@@ -9,7 +9,7 @@
                 <h5 class="mb-0"><i class="bi bi-flag"></i> Nuevo País</h5>
             </div>
             <div class="card-body">
-                <form action="{{ route('paises.store') }}" method="POST">
+                <form action="{{ route('paises.store') }}" method="POST" id="frm_nuevo_paises">
                     @csrf
                     <div class="mb-3">
                         <label for="NombrePais" class="form-label">Nombre del País:</label>
@@ -30,4 +30,20 @@
         </div>
     </div>
 </div>
+<script>
+  $("#frm_nuevo_paises").validate({
+    rules: {
+      NombrePais: {
+        required: true,
+        minlength: 3
+      }
+    },
+    messages: {
+      NombrePais: {
+        required: "El nombre es obligatorio",
+        minlength: "El nombre debe tener al menos 3 caracteres"
+      }
+    }
+  });
+</script>
 @endsection

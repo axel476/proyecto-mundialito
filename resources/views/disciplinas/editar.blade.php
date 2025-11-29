@@ -8,7 +8,7 @@
                 <h5 class="mb-0"><i class="bi bi-trophy"></i> Editar Disciplina</h5>
             </div>
             <div class="card-body">
-                <form action="{{ route('disciplinas.update', $disciplina->id) }}" method="POST">
+                <form action="{{ route('disciplinas.update', $disciplina->id) }}" method="POST" id="frm_nuevo_dc">
                     @csrf
                     @method('PUT')
                     
@@ -35,6 +35,24 @@
         </div>
     </div>
 </div>
+
+
+<script>
+  $("#frm_nuevo_dc").validate({
+    rules: {
+      NombreDisciplina: {
+        required: true,
+        minlength: 3
+      }
+    },
+    messages: {
+      NombreDisciplina: {
+        required: "El nombre es obligatorio",
+        minlength: "El nombre debe tener al menos 3 caracteres"
+      }
+    }
+  });
+</script>
 
 @if(session('message'))
     <script>

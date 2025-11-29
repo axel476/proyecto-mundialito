@@ -8,7 +8,7 @@
                 <h5 class="mb-0"><i class="bi bi-flag"></i> Editar País</h5>
             </div>
             <div class="card-body">
-                <form action="{{ route('paises.update', $pais->id) }}" method="POST">
+                <form action="{{ route('paises.update', $pais->id) }}" method="POST" id="frm_nuevo_paises">
                     @csrf
                     @method('PUT')
                     
@@ -35,6 +35,23 @@
         </div>
     </div>
 </div>
+<script>
+  $("#frm_nuevo_paises").validate({
+    rules: {
+      NombrePais: {
+        required: true,
+        minlength: 3
+      }
+    },
+    messages: {
+      NombrePais: {
+        required: "El nombre es obligatorio",
+        minlength: "El nombre debe tener al menos 3 caracteres"
+      }
+    }
+  });
+</script>
+
 @if(session('message'))
     <script>
         Swal.fire({
