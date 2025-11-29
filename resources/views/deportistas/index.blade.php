@@ -32,10 +32,10 @@
                         <a href="{{ route('deportistas.edit', $deportista->id) }}" class="btn btn-warning btn-sm"> <!-- AGREGADA RUTA -->
                             Editar
                         </a>
-                        <form action="" method="POST" style="display: inline;">
+                        <form action="{{ route('deportistas.destroy', $deportista->id) }}" method="POST" style="display: inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar?')">
+                            <button type="submit" class="btn btn-danger btn-sm">
                                 Eliminar
                             </button>
                         </form>

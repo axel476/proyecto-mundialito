@@ -32,10 +32,10 @@
                         <a href="{{ route('disciplinas.edit', $disciplina->id) }}" class="btn btn-warning btn-sm">
                             Editar
                         </a>
-                        <form action="" method="POST" style="display: inline;">
+                        <form action="{{ route('disciplinas.destroy', $disciplina->id) }}" method="POST" style="display: inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Eliminar?')">
+                            <button type="submit" class="btn btn-danger btn-sm">
                                 Eliminar
                             </button>
                         </form>
@@ -48,15 +48,14 @@
 </body>
 </html>
 
-<!-- Mostrar mensaje de confirmación -->
-    @if(session('message'))
-        <script>
-            Swal.fire({
-                title: "CONFIRMACIÓN",
-                text: "{{ session('message') }}",
-                icon: "success",
-            });
-        </script>
-    @endif
+@if(session('message'))
+    <script>
+        Swal.fire({
+            title: "CONFIRMACIÓN",
+            text: "{{ session('message') }}",
+            icon: "success",
+        });
+    </script>
+@endif
 
 @endsection
