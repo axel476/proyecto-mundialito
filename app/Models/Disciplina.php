@@ -1,0 +1,22 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Disciplina extends Model
+{
+    //
+    use HasFactory;
+    protected $fillable = [
+        'NombreDisciplina'
+    ];
+
+    // Relación con Deportista
+    public function deportistas()
+    {
+        return $this->hasMany(Deportista::class, 'IdDisciplina');
+    }
+
+}
