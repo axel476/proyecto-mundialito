@@ -20,16 +20,20 @@ class AuthController extends Controller
         $correo = $request->input('correoUsuario');
         $password = $request->input('passwordUsuario');
 
+        // ADMIN - Redirige al CRUD completo (deportistas.index)
         if ($correo == 'aiza4840@gmail.com' && $password == 'aiypwzqp') {
             Session::put('es_admin', true);
-            return redirect()->route('zonasriesgos.inicio');
+            Session::put('nombre_usuario', 'Administrador');
+            return redirect()->route('deportistas.index'); // A tu CRUD
         }
 
+        // USUARIO NORMAL - Redirige a visitante/menu
         $usuario = Usuario::where('correoUsuario', $correo)->first();
 
         if ($usuario && Hash::check($password, $usuario->passwordUsuario)) {
             Session::put('usuario_id', $usuario->id);
-            return view('visitante.menu', ['usuario_id' => $usuario->id]);
+            Session::put('nombre_usuario', $usuario->nombreUsuario);
+            return redirect()->route('visitante.menu'); // Cambia esto
         } else {
             return back()->with('error', 'Correo o contraseña incorrectos');
         }
