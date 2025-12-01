@@ -10,9 +10,6 @@
 <body>
     <div class="container mt-4">
         <h1>Lista de Deportistas</h1>
-        <a href="{{ route('deportistas.create') }}" class="btn btn-success mb-3">
-            Crear Nuevo Deportista
-        </a>
         <table class="table table-bordered">
             <thead>
                 <tr>

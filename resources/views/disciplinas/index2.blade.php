@@ -11,10 +11,6 @@
 <body>
     <div class="container mt-4">
         <h1>Lista de Disciplinas</h1>
-        
-        <a href="{{ route('disciplinas.create') }}" class="btn btn-success mb-3">
-            Crear Nueva Disciplina
-        </a>
 
 
         <table class="table table-bordered">
