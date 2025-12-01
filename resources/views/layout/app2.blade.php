@@ -82,9 +82,9 @@
 
     <nav id="navmenu" class="navmenu">
       <ul>
-        <li><a href="{{ route('deportistas.index') }}" class="active"><i class="bi bi-house navicon"></i>Deportistas</a></li>
-        <li><a href="{{ route('disciplinas.index') }}"><i class="bi bi-person navicon"></i> Disciplinas</a></li>
-        <li><a href="{{ route('paises.index') }}"><i class="bi bi-file-earmark-text navicon"></i> Paises</a></li>
+        <li><a href="{{ route('deportistas.index2') }}" class="active"><i class="bi bi-house navicon"></i>Deportistas</a></li>
+        <li><a href="{{ route('disciplinas.index2') }}"><i class="bi bi-person navicon"></i> Disciplinas</a></li>
+        <li><a href="{{ route('paises.index2') }}"><i class="bi bi-file-earmark-text navicon"></i> Paises</a></li>
         <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Portfolio</a></li>
         <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
         <li class="dropdown"><a href="#"><i class="bi bi-menu-button navicon"></i> <span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
