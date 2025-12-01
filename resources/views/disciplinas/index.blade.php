@@ -58,4 +58,15 @@
     </script>
 @endif
 
+@if(session('error'))
+<script>
+    Swal.fire({
+        title: 'Error',
+        text: '{{ session('error') }}',
+        icon: 'error',
+        confirmButtonColor: '#3085d6'
+    });
+</script>
+@endif
+
 @endsection

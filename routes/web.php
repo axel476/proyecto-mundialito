@@ -23,7 +23,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.process');
 Route::post('/registro', [AuthController::class, 'registro'])->name('registro');
 Route::get('/verify', [AuthController::class, 'showVerifyForm'])->name('verify.form');
 Route::post('/verify', [AuthController::class, 'verifyEmail'])->name('verify.process');
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // RUTAS para visitantes (solo lectura) - USAN LAS VISTAS index2
 Route::get('/visitante/deportistas', function() {

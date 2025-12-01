@@ -46,4 +46,27 @@
     }
   });
 </script>
+
+@if(session('message'))
+<script>
+    Swal.fire({
+        title: '¡Éxito!',
+        text: '{{ session('message') }}',
+        icon: 'success',
+        timer: 3000,
+        showConfirmButton: false
+    });
+</script>
+@endif
+
+@if(session('error'))
+<script>
+    Swal.fire({
+        title: 'Error',
+        text: '{{ session('error') }}',
+        icon: 'error',
+        timer: 3000
+    });
+</script>
+@endif
 @endsection

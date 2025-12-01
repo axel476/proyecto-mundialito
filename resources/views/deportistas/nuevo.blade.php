@@ -1,4 +1,3 @@
-
 @extends('layout.app')
 
 @section('contenido')
@@ -13,66 +12,60 @@
                 <form action="{{ route('deportistas.store') }}" method="POST" id="frm_nuevo_deportista">
                     @csrf
                     
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="NombreDeportista" class="form-label">Nombre Completo:</label>
-                            <input type="text" class="form-control" id="NombreDeportista" name="NombreDeportista" required
-                                   placeholder="Ej: Juan Pérez García">
-                        </div>
-                        
-                        <div class="col-md-6 mb-3">
-                            <label for="FechaNacimiento" class="form-label">Fecha de Nacimiento:</label>
-                            <input type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento" required>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="EstaturaCM" class="form-label">Estatura (cm):</label>
-                            <input type="number" class="form-control" id="EstaturaCM" name="EstaturaCM" 
-                                   placeholder="Ej: 175">
-                        </div>
-                        
-                        <div class="col-md-6 mb-3">
-                            <label for="PesoKG" class="form-label">Peso (kg):</label>
-                            <input type="number" class="form-control" id="PesoKG" name="PesoKG" 
-                                   placeholder="Ej: 70">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="IdPais" class="form-label">País:</label>
-                            <select class="form-control" id="IdPais" name="IdPais" required>
-                                <option value="">Seleccionar País</option>
-                                @foreach($paises as $pais)
-                                    <option value="{{ $pais->id }}">{{ $pais->NombrePais }}</option>
-                                @endforeach
-                            </select>
-                            @if($paises->count() == 0)
-                                <small class="text-danger">Primero debes crear un país</small>
-                            @endif
-                        </div>
-                        
-                        <div class="col-md-6 mb-3">
-                            <label for="IdDisciplina" class="form-label">Disciplina:</label>
-                            <select class="form-control" id="IdDisciplina" name="IdDisciplina" required>
-                                <option value="">Seleccionar Disciplina</option>
-                                @foreach($disciplinas as $disciplina)
-                                    <option value="{{ $disciplina->id }}">{{ $disciplina->NombreDisciplina }}</option>
-                                @endforeach
-                            </select>
-                            @if($disciplinas->count() == 0)
-                                <small class="text-danger">Primero debes crear una disciplina</small>
-                            @endif
-                        </div>
+                    <div class="mb-3">
+                        <label for="NombreDeportista" class="form-label">Nombre Completo:</label>
+                        <input type="text" class="form-control" id="NombreDeportista" name="NombreDeportista" required
+                               placeholder="Ej: Juan Pérez García">
                     </div>
                     
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <div class="mb-3">
+                        <label for="FechaNacimiento" class="form-label">Fecha de Nacimiento:</label>
+                        <input type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="EstaturaCM" class="form-label">Estatura (cm):</label>
+                        <input type="number" class="form-control" id="EstaturaCM" name="EstaturaCM" 
+                               placeholder="Ej: 175">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="PesoKG" class="form-label">Peso (kg):</label>
+                        <input type="number" class="form-control" id="PesoKG" name="PesoKG" 
+                               placeholder="Ej: 70">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="IdPais" class="form-label">País:</label>
+                        <select class="form-control" id="IdPais" name="IdPais" required>
+                            <option value="">Seleccionar País</option>
+                            @foreach($paises as $pais)
+                                <option value="{{ $pais->id }}">{{ $pais->NombrePais }}</option>
+                            @endforeach
+                        </select>
+                        @if($paises->count() == 0)
+                            <small class="text-danger">Primero debes crear un país</small>
+                        @endif
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="IdDisciplina" class="form-label">Disciplina:</label>
+                        <select class="form-control" id="IdDisciplina" name="IdDisciplina" required>
+                            <option value="">Seleccionar Disciplina</option>
+                            @foreach($disciplinas as $disciplina)
+                                <option value="{{ $disciplina->id }}">{{ $disciplina->NombreDisciplina }}</option>
+                            @endforeach
+                        </select>
+                        @if($disciplinas->count() == 0)
+                            <small class="text-danger">Primero debes crear una disciplina</small>
+                        @endif
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex">
                         <a href="{{ route('deportistas.index') }}" class="btn btn-secondary me-md-2">
                             <i class="bi bi-arrow-left"></i> Cancelar
                         </a>
-                        <button type="submit" class="btn btn-primary" >
+                        <button type="submit" class="btn btn-primary">
                             <i class="bi bi-check-circle"></i> Guardar Deportista
                         </button>
                     </div>
@@ -81,7 +74,6 @@
         </div>
     </div>
 </div>
-
 
 <script>
   $("#frm_nuevo_deportista").validate({
@@ -130,4 +122,27 @@
     }
   });
 </script>
+
+@if(session('message'))
+<script>
+    Swal.fire({
+        title: '¡Éxito!',
+        text: '{{ session('message') }}',
+        icon: 'success',
+        timer: 3000,
+        showConfirmButton: false
+    });
+</script>
+@endif
+
+@if(session('error'))
+<script>
+    Swal.fire({
+        title: 'Error',
+        text: '{{ session('error') }}',
+        icon: 'error',
+        timer: 3000
+    });
+</script>
+@endif
 @endsection

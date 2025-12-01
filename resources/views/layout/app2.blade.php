@@ -104,9 +104,12 @@
             <li><a href="#">Dropdown 4</a></li>
           </ul>
         </li>
-        <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Cerrar Sesion</a></li>
+        <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bi bi-envelope navicon"></i> Cerrar Sesion</a></li>
       </ul>
     </nav>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
 
   </header>
   

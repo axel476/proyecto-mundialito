@@ -137,17 +137,7 @@
         <div id="login-form" class="form-container">
             <h2 class="form-title">Iniciar Sesión</h2>
 
-            {{-- Mostrar errores y mensajes --}}
-            @if (session('error'))
-                <div class="alert alert-error">{{ session('error') }}</div>
-            @endif
-            @if (session('success'))
-                <div class="alert alert-success">{{ session('success') }}</div>
-            @endif
-            @if (session('info'))
-                <div class="alert alert-success">{{ session('info') }}</div>
-            @endif
-
+            
             {{-- FORMULARIO LOGIN --}}
             <form method="POST" action="{{ route('login.process') }}">
                 @csrf
@@ -303,4 +293,47 @@
                 });
             });
         });
+
+        
+</script>
+
+<script>
+$(document).ready(function () {
+    // SweetAlert para mensajes
+    @if(session('error'))
+        Swal.fire({
+            title: 'Error',
+            text: '{{ session('error') }}',
+            icon: 'error',
+            confirmButtonColor: '#3085d6'
+        });
+    @endif
+
+    @if(session('success'))
+        Swal.fire({
+            title: '¡Éxito!',
+            text: '{{ session('success') }}',
+            icon: 'success',
+            confirmButtonColor: '#3085d6'
+        });
+    @endif
+
+    @if(session('info'))
+        Swal.fire({
+            title: 'Información',
+            text: '{{ session('info') }}',
+            icon: 'info',
+            confirmButtonColor: '#3085d6'
+        });
+    @endif
+
+    @if($errors->any())
+        Swal.fire({
+            title: 'Error de validación',
+            html: `@foreach($errors->all() as $error)<p>{{ $error }}</p>@endforeach`,
+            icon: 'error',
+            confirmButtonColor: '#3085d6'
+        });
+    @endif
+});
 </script>

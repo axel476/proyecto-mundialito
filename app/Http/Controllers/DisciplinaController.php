@@ -83,7 +83,13 @@ class DisciplinaController extends Controller
     public function destroy(string $id)
     {
         //
-        Disciplina::destroy($id);
-        return redirect()->route('disciplinas.index')->with('message', 'Disciplina eliminada correctamente');
+       try {
+            Disciplina::destroy($id);
+            return redirect()->route('disciplinas.index')->with('message', 'Disciplina eliminada correctamente');
+            
+        } catch (\Exception $e) {
+            return redirect()->route('disciplinas.index')
+                ->with('error', 'No se puede eliminar esta disciplina porque tiene deportistas asociados.');
+        }
     }
 }

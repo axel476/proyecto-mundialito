@@ -13,87 +13,81 @@
                     @csrf
                     @method('PUT')
                     
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="NombreDeportista" class="form-label">Nombre Completo:</label>
-                            <input type="text" class="form-control" id="NombreDeportista" name="NombreDeportista" 
-                                   value="{{ old('NombreDeportista', $deportista->NombreDeportista) }}" required
-                                   placeholder="Ej: Juan Pérez García">
-                            @error('NombreDeportista')
-                                <small class="text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
-                        
-                        <div class="col-md-6 mb-3">
-                            <label for="FechaNacimiento" class="form-label">Fecha de Nacimiento:</label>
-                            <input type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento" 
-                                   value="{{ old('FechaNacimiento', $deportista->FechaNacimiento) }}" required>
-                            @error('FechaNacimiento')
-                                <small class="text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
+                    <div class="mb-3">
+                        <label for="NombreDeportista" class="form-label">Nombre Completo:</label>
+                        <input type="text" class="form-control" id="NombreDeportista" name="NombreDeportista" 
+                               value="{{ old('NombreDeportista', $deportista->NombreDeportista) }}" required
+                               placeholder="Ej: Juan Pérez García">
+                        @error('NombreDeportista')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="FechaNacimiento" class="form-label">Fecha de Nacimiento:</label>
+                        <input type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento" 
+                               value="{{ old('FechaNacimiento', $deportista->FechaNacimiento) }}" required>
+                        @error('FechaNacimiento')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="EstaturaCM" class="form-label">Estatura (cm):</label>
-                            <input type="number" class="form-control" id="EstaturaCM" name="EstaturaCM" 
-                                   value="{{ old('EstaturaCM', $deportista->EstaturaCM) }}"
-                                   placeholder="Ej: 175">
-                            @error('EstaturaCM')
-                                <small class="text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
-                        
-                        <div class="col-md-6 mb-3">
-                            <label for="PesoKG" class="form-label">Peso (kg):</label>
-                            <input type="number" class="form-control" id="PesoKG" name="PesoKG" 
-                                   value="{{ old('PesoKG', $deportista->PesoKG) }}"
-                                   placeholder="Ej: 70">
-                            @error('PesoKG')
-                                <small class="text-danger">{{ $message }}</small>
-                            @enderror
-                        </div>
+                    <div class="mb-3">
+                        <label for="EstaturaCM" class="form-label">Estatura (cm):</label>
+                        <input type="number" class="form-control" id="EstaturaCM" name="EstaturaCM" 
+                               value="{{ old('EstaturaCM', $deportista->EstaturaCM) }}"
+                               placeholder="Ej: 175">
+                        @error('EstaturaCM')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="PesoKG" class="form-label">Peso (kg):</label>
+                        <input type="number" class="form-control" id="PesoKG" name="PesoKG" 
+                               value="{{ old('PesoKG', $deportista->PesoKG) }}"
+                               placeholder="Ej: 70">
+                        @error('PesoKG')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="IdPais" class="form-label">País:</label>
-                            <select class="form-control" id="IdPais" name="IdPais" required>
-                                <option value="">Seleccionar País</option>
-                                @foreach($paises as $pais)
-                                    <option value="{{ $pais->id }}" 
-                                        {{ old('IdPais', $deportista->IdPais) == $pais->id ? 'selected' : '' }}>
-                                        {{ $pais->NombrePais }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('IdPais')
-                                <small class="text-danger">{{ $message }}</small>
-                            @enderror
-                            @if($paises->count() == 0)
-                                <small class="text-danger">Primero debes crear un país</small>
-                            @endif
-                        </div>
-                        
-                        <div class="col-md-6 mb-3">
-                            <label for="IdDisciplina" class="form-label">Disciplina:</label>
-                            <select class="form-control" id="IdDisciplina" name="IdDisciplina" required>
-                                <option value="">Seleccionar Disciplina</option>
-                                @foreach($disciplinas as $disciplina)
-                                    <option value="{{ $disciplina->id }}" 
-                                        {{ old('IdDisciplina', $deportista->IdDisciplina) == $disciplina->id ? 'selected' : '' }}>
-                                        {{ $disciplina->NombreDisciplina }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('IdDisciplina')
-                                <small class="text-danger">{{ $message }}</small>
-                            @enderror
-                            @if($disciplinas->count() == 0)
-                                <small class="text-danger">Primero debes crear una disciplina</small>
-                            @endif
-                        </div>
+                    <div class="mb-3">
+                        <label for="IdPais" class="form-label">País:</label>
+                        <select class="form-control" id="IdPais" name="IdPais" required>
+                            <option value="">Seleccionar País</option>
+                            @foreach($paises as $pais)
+                                <option value="{{ $pais->id }}" 
+                                    {{ old('IdPais', $deportista->IdPais) == $pais->id ? 'selected' : '' }}>
+                                    {{ $pais->NombrePais }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('IdPais')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                        @if($paises->count() == 0)
+                            <small class="text-danger">Primero debes crear un país</small>
+                        @endif
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="IdDisciplina" class="form-label">Disciplina:</label>
+                        <select class="form-control" id="IdDisciplina" name="IdDisciplina" required>
+                            <option value="">Seleccionar Disciplina</option>
+                            @foreach($disciplinas as $disciplina)
+                                <option value="{{ $disciplina->id }}" 
+                                    {{ old('IdDisciplina', $deportista->IdDisciplina) == $disciplina->id ? 'selected' : '' }}>
+                                    {{ $disciplina->NombreDisciplina }}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('IdDisciplina')
+                            <small class="text-danger">{{ $message }}</small>
+                        @enderror
+                        @if($disciplinas->count() == 0)
+                            <small class="text-danger">Primero debes crear una disciplina</small>
+                        @endif
                     </div>
                     
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -158,15 +152,16 @@
   });
 </script>
 
-
 @if(session('message'))
-    <script>
-        Swal.fire({
-            title: "CONFIRMACIÓN",
-            text: "{{ session('message') }}",
-            icon: "success",
-        });
-    </script>
+<script>
+    Swal.fire({
+        title: '¡Éxito!',
+        text: '{{ session('message') }}',
+        icon: 'success',
+        timer: 3000,
+        showConfirmButton: false
+    });
+</script>
 @endif
 
 @endsection

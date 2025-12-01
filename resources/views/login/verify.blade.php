@@ -64,24 +64,18 @@
 </head>
 <body>
     <div class="container">
-        <h2>Verificación de Correo</h2>
-
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
+        <h2 class="card-title text-center mb-4">Verificación de Correo</h2>
 
 
-        <p>Por favor, ingresa el código de verificación que se ha enviado a tu correo electrónico.</p>
+        <p class="text-center text-muted mb-4">Por favor, ingresa el código de verificación que se ha enviado a tu correo electrónico.</p>
         
         <form method="POST" action="{{ route('verify.process') }}">
             @csrf
-            <div class="form-group">
-                <label for="verification_code">Código de verificación</label>
+            <div class="mb-3">
+                <label for="verification_code" class="card-title text-center mb-4">Código de verificación</label>
                 <input type="text" class="form-control" id="verification_code" name="verification_code" >
             </div>
-            <button type="submit" id="verificar" class="btn">Verificar</button>
+            <button type="submit" id="verificar" class="btn btn-primary btn-lg w-100">Verificar</button>
         </form>
     </div>
 </body>
@@ -142,4 +136,45 @@
             });
         });
     });
+</script>
+
+<script>
+$(document).ready(function () {
+    // SweetAlert para mensajes
+    @if(session('error'))
+        Swal.fire({
+            title: 'Error',
+            text: '{{ session('error') }}',
+            icon: 'error',
+            confirmButtonColor: '#3085d6'
+        });
+    @endif
+
+    @if(session('success'))
+        Swal.fire({
+            title: '¡Éxito!',
+            text: '{{ session('success') }}',
+            icon: 'success',
+            confirmButtonColor: '#3085d6'
+        });
+    @endif
+
+    @if(session('info'))
+        Swal.fire({
+            title: 'Información',
+            text: '{{ session('info') }}',
+            icon: 'info',
+            confirmButtonColor: '#3085d6'
+        });
+    @endif
+
+    @if(session('message'))
+        Swal.fire({
+            title: 'Confirmación',
+            text: '{{ session('message') }}',
+            icon: 'success',
+            confirmButtonColor: '#3085d6'
+        });
+    @endif
+});
 </script>

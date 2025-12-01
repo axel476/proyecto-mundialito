@@ -78,8 +78,13 @@ class PaisController extends Controller
      */
     public function destroy(string $id)
     {
-        //
-        Pais::destroy($id);
-        return redirect()->route('paises.index')->with('message', 'País eliminado correctamente');
+        try {
+            Pais::destroy($id);
+            return redirect()->route('paises.index')->with('message', 'País eliminado correctamente');
+            
+        } catch (\Exception $e) {
+            return redirect()->route('paises.index')
+                ->with('error', 'No se puede eliminar este país porque tiene deportistas asociados.');
+        }
     }
 }
