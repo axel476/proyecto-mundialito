@@ -11,9 +11,7 @@
 <body>
     <div class="container mt-4">
         <h1>Lista de Países</h1>
-        <a href="{{ route('paises.create') }}" class="btn btn-success mb-3">
-            Crear Nuevo País
-        </a>
+        
         <table class="table table-bordered">
             <thead>
                 <tr>

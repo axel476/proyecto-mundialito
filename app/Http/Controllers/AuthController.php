@@ -33,7 +33,7 @@ class AuthController extends Controller
         if ($usuario && Hash::check($password, $usuario->passwordUsuario)) {
             Session::put('usuario_id', $usuario->id);
             Session::put('nombre_usuario', $usuario->nombreUsuario);
-            return redirect()->route('visitante.menu'); // Cambia esto
+            return redirect()->route('deportistas.index2'); // Cambia esto
         } else {
             return back()->with('error', 'Correo o contraseña incorrectos');
         }
